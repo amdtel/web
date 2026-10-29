@@ -1,10 +1,11 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { services } from '../../data/services';
+import { site } from '../../data/site';
 export function getStaticPaths() { return services.map((s) => ({ params: { slug: s.slug }, props: { s } })); }
 const { s } = Astro.props;
 ---
-<Base title={`${s.name} – Your Business Name`} description={s.tagline}>
+<Base title={`${s.name} – ${site.name}`} description={s.tagline}>
   <section><div class="wrap split">
     <div>
       <h1>{s.name}</h1>

@@ -2,8 +2,9 @@
 import Base from '../layouts/Base.astro';
 import ServiceCard from '../components/service-card.ts';
 import { services } from '../data/services';
+import { site } from '../data/site';
 ---
-<Base title="Your Business Name – Home, garden & tech help">
+<Base title={`${site.name} – ${site.tagline}`}>
   <div class="hero"><div class="wrap">
     <h1>One call for home, garden and tech.</h1>
     <p>Reliable local help for property jobs, gardens, computers, websites and home networks – for households and businesses.</p>

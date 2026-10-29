@@ -1,9 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import { services } from '../data/services';
+import { site } from '../data/site';
 const selected = Astro.url.searchParams.get('service');
 ---
-<Base title="Enquire or book – Your Business Name">
+<Base title={`Enquire or book – ${site.name}`}>
   <section><div class="wrap">
     <h1>Enquire or request a booking</h1>
     <p>Tell us what you need. Add a preferred date if you'd like a visit and we'll confirm availability.</p>

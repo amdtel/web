@@ -1,6 +1,6 @@
 # Project context (read first)
 
-Business website: property maintenance, gardening & clearance, computer repair & web dev, home network install. Collects enquiries/booking requests. Placeholder name "Your Business Name" (to be replaced).
+Business website: property maintenance, gardening & clearance, computer repair & web dev, home network install. Collects enquiries/booking requests. Business name/contact details live in `src/data/site.ts` (owner fills in; empty fields are hidden).
 
 ## Stack & principles
 - Astro (static output) + Lit (`@astrojs/lit`) + Open Props CSS + Netlify hosting.
@@ -9,6 +9,7 @@ Business website: property maintenance, gardening & clearance, computer repair &
 - Booking = a "preferred date" field on the form (request-based, no calendar yet).
 
 ## Layout
+- `src/data/site.ts` – business name, tagline, email, phone, area, address, hours.
 - `src/data/services.ts` – single source of truth for services (add an entry = new page, nav link, form option).
 - `src/pages/` index, `services/[slug].astro`, `enquire`, `thanks`, `credits`.
 - `src/components/service-card.ts` – Lit SSR card. `src/layouts/Base.astro`. `src/styles/global.css`.
