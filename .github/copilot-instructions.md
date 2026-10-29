@@ -11,7 +11,9 @@ Business website: property maintenance, gardening & clearance, computer repair &
 ## Layout
 - `src/data/site.ts` – business name, tagline, email, phone, area, address, hours.
 - `src/data/services.ts` – single source of truth for services (add an entry = new page, nav link, form option).
-- `src/pages/` index, `services/[slug].astro`, `enquire`, `thanks`, `credits`.
+- Design: modelled on eccs-scotland.netlify.app (full-bleed hero, overlay header, DM Serif Display/DM Sans, warm accent, image tiles). Styles are plain CSS in `src/styles/global.css` with a few Open Props imports.
+- Services: Property Maintenance, Gardening & Clearance, IT Tech Services (repair + web dev + home networks combined, by choice).
+- `src/pages/` index, `services/index`, `services/[slug].astro`, `enquire`, `thanks`, `credits`.
 - `src/components/service-card.ts` – Lit SSR card. `src/layouts/Base.astro`. `src/styles/global.css`.
 - `public/images/` – Wikimedia Commons photos; credits listed in `src/pages/credits.astro` (keep updated when adding images).
 

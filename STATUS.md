@@ -8,10 +8,12 @@
 
 - Business details centralised in `src/data/site.ts`.
 
+- Redesigned to eccs-scotland style; services merged to 3 (IT Tech Services = repair + web dev + networks).
+
 ## To do / ideas
 - Owner to fill in `src/data/site.ts` (name, email, phone, area, address, hours); add logo.
 - Owner to review promo copy in `src/data/services.ts`. Computer Repair + Web Development stays one skill (decided).
-- Better-fitting photos (current ones are generic); add alt text review.
+- Add IT-specific/network photos for the merged section if wanted; better-fitting photos (current ones are generic); add alt text review.
 - Optional real booking (calendar embed e.g. Cal.com) later.
 - Deploy to Netlify (connect repo; forms auto-detected) and enable form notifications.
 - Add favicon, sitemap, local-business structured data.

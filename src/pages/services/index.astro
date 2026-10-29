@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../components/service-card.ts';
+import { services } from '../../data/services';
+import { site } from '../../data/site';
+---
+<Base title={`Services – ${site.name}`}>
+  <main>
+    <section class="hero small"><div class="hero-bg"><img src="/images/property.jpg" alt="" /></div>
+      <div class="hero-copy"><p class="eyebrow">Services</p><h1>How we can help</h1></div></section>
+    <section class="block wrap"><div class="tiles">
+      {services.map((s) => <service-card href={`/services/${s.slug}/`} name={s.name} tagline={s.tagline} image={s.image} alt={s.imageAlt} />)}
+    </div></section>
+  </main>
+</Base>

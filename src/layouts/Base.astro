@@ -1,8 +1,10 @@
 ---
 import '../styles/global.css';
-import { services } from '../data/services';
 import { site } from '../data/site';
-const { title, description = 'Property maintenance, gardening, computer repair, web development and home networks.' } = Astro.props;
+const { title, description = `${site.name} – ${site.tagline}` } = Astro.props;
+const path = Astro.url.pathname;
+const isHome = path === '/';
+const nav = [['/', 'Home'], ['/services/', 'Services'], ['/enquire/', 'Contact']];
 ---
 <!doctype html>
 <html lang="en-GB">
@@ -11,23 +13,34 @@ const { title, description = 'Property maintenance, gardening, computer repair, 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   </head>
-  <body>
-    <header class="site"><div class="wrap">
-      <a href="/">{site.name}</a>
-      <nav>
-        {services.map((s) => <a href={`/services/${s.slug}/`}>{s.name.split(' &')[0]}</a>)}
-        <a href="/enquire/">Enquire</a>
+  <body data-home={isHome ? '' : undefined}>
+    <header class="site-header">
+      <a class="brand" href="/">{site.name}</a>
+      {(site.phone || site.email) && (
+        <a class="contact-quick" href={site.phone ? `tel:${site.phone}` : `mailto:${site.email}`}>
+          {site.phone && <span>{site.phone}</span>}
+          {site.email && <small>{site.email}</small>}
+        </a>
+      )}
+      <nav class="site-nav" aria-label="Main navigation">
+        {nav.map(([href, label]) => <a href={href} aria-current={(href === '/' ? isHome : path.startsWith(href) || (href === '/services/' && path.startsWith('/services'))) ? 'page' : undefined}>{label}</a>)}
       </nav>
-    </div></header>
-    <main><slot /></main>
-    <footer class="site"><div class="wrap">
-      <p>© {new Date().getFullYear()} {site.name}.{site.area && ` ${site.area}.`}</p>
-      {site.phone && <p>Phone: <a href={`tel:${site.phone}`}>{site.phone}</a></p>}
-      {site.email && <p>Email: <a href={`mailto:${site.email}`}>{site.email}</a></p>}
-      {site.address && <p>{site.address}</p>}
-      {site.hours && <p>{site.hours}</p>}
-      <p>Photos from Wikimedia Commons – see <a href="/credits/">credits</a>.</p>
-    </div></footer>
+    </header>
+    <slot />
+    <footer class="site-footer">
+      <a href="/">© {new Date().getFullYear()} {site.name}</a>
+      {site.area && <span>{site.area}</span>}
+      <span class="links">
+        {site.phone && <a href={`tel:${site.phone}`}>{site.phone}</a>}
+        {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
+        {site.address && <span>{site.address}</span>}
+        {site.hours && <span>{site.hours}</span>}
+        <a href="/credits/">Image credits</a>
+      </span>
+    </footer>
   </body>
 </html>

@@ -6,15 +6,17 @@ export function getStaticPaths() { return services.map((s) => ({ params: { slug:
 const { s } = Astro.props;
 ---
 <Base title={`${s.name} – ${site.name}`} description={s.tagline}>
-  <section><div class="wrap split">
-    <div>
-      <h1>{s.name}</h1>
-      <p><strong>{s.tagline}</strong></p>
-      <p>{s.intro}</p>
-      <ul>{s.items.map((i) => <li>{i}</li>)}</ul>
-      <p class="promo">{s.promo}</p>
-      <p><a class="btn" href={`/enquire/?service=${s.slug}`}>Enquire about {s.name}</a></p>
-    </div>
-    <img src={s.image} alt={s.imageAlt} />
-  </div></section>
+  <main>
+    <section class="hero small"><div class="hero-bg"><img src={s.image} alt="" /></div>
+      <div class="hero-copy"><p class="eyebrow">Services</p><h1>{s.name}</h1><p class="hero-subtitle">{s.tagline}</p></div></section>
+    <section class="block wrap split">
+      <div>
+        <p>{s.intro}</p>
+        <ul class="checklist">{s.items.map((i) => <li>{i}</li>)}</ul>
+        <p class="promo">{s.promo}</p>
+        <p><a class="button button-dark" href={`/enquire/?service=${s.slug}`}>Enquire <span aria-hidden="true">›</span></a></p>
+      </div>
+      <img src={s.image} alt={s.imageAlt} />
+    </section>
+  </main>
 </Base>
