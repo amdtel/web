@@ -1,0 +1,17 @@
+{
+  "name": "web",
+  "type": "module",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/lit": "^4.3.0",
+    "astro": "^7.4.4",
+    "lit": "^3.3.3",
+    "open-props": "^1.7.23"
+  }
+}

@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceCard from '../components/service-card.ts';
+import { services } from '../data/services';
+---
+<Base title="Your Business Name – Home, garden & tech help">
+  <div class="hero"><div class="wrap">
+    <h1>One call for home, garden and tech.</h1>
+    <p>Reliable local help for property jobs, gardens, computers, websites and home networks – for households and businesses.</p>
+    <a class="btn" href="/enquire/">Get a quote or book a visit</a>
+  </div></div>
+  <section><div class="wrap">
+    <h2>What we do</h2>
+    <div class="grid">
+      {services.map((s) => (
+        <service-card href={`/services/${s.slug}/`} name={s.name} tagline={s.tagline} image={s.image} alt={s.imageAlt} />
+      ))}
+    </div>
+  </div></section>
+</Base>

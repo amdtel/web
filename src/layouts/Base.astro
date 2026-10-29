@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+import { services } from '../data/services';
+const { title, description = 'Property maintenance, gardening, computer repair, web development and home networks.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site"><div class="wrap">
+      <a href="/">Your Business Name</a>
+      <nav>
+        {services.map((s) => <a href={`/services/${s.slug}/`}>{s.name.split(' &')[0]}</a>)}
+        <a href="/enquire/">Enquire</a>
+      </nav>
+    </div></header>
+    <main><slot /></main>
+    <footer class="site"><div class="wrap">
+      <p>© Your Business Name. Photos from Wikimedia Commons – see <a href="/credits/">credits</a>.</p>
+    </div></footer>
+  </body>
+</html>

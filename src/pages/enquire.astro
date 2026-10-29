@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { services } from '../data/services';
+const selected = Astro.url.searchParams.get('service');
+---
+<Base title="Enquire or book – Your Business Name">
+  <section><div class="wrap">
+    <h1>Enquire or request a booking</h1>
+    <p>Tell us what you need. Add a preferred date if you'd like a visit and we'll confirm availability.</p>
+    <form name="enquiry" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="enquiry" />
+      <p class="hp"><label>Leave blank <input name="bot-field" /></label></p>
+      <label>Name <input name="name" required autocomplete="name" /></label>
+      <label>Email <input type="email" name="email" required autocomplete="email" /></label>
+      <label>Phone (optional) <input type="tel" name="phone" autocomplete="tel" /></label>
+      <label>Service
+        <select name="service" required>
+          {services.map((s) => <option value={s.slug} selected={s.slug === selected}>{s.name}</option>)}
+        </select>
+      </label>
+      <label>Preferred date (optional) <input type="date" name="preferred_date" /></label>
+      <label>Details <textarea name="message" rows="5" required></textarea></label>
+      <button class="btn" type="submit">Send enquiry</button>
+    </form>
+  </div></section>
+</Base>
